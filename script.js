@@ -35,23 +35,80 @@ function submitTest(){
     let correct = 0;
     let wrong = 0;
     let unattempted = 0;
+    let report = "";
+    
+for(let i = 0; i < questions.length; i++){
 
-    for(let i = 0; i < questions.length; i++){
+    if(answers[i] === null){
 
-        if(answers[i] === null){
-            unattempted++;
-        }
+        unattempted++;
 
-        else if(answers[i] === questions[i].answer){
-            correct++;
-            score += 4;
-        }
+        report += `
+        <div style="border:1px solid #ddd;padding:15px;margin:10px 0;border-radius:8px;background:#fff8f8;">
 
-        else{
-            wrong++;
-            score -= 1;
-        }
+            <h3>Question ${i+1}</h3>
+
+            <p><b>${questions[i].question}</b></p>
+
+            <p>A. ${questions[i].options[0]}</p>
+            <p>B. ${questions[i].options[1]}</p>
+            <p>C. ${questions[i].options[2]}</p>
+            <p>D. ${questions[i].options[3]}</p>
+
+            <hr>
+
+            <p style="color:orange;">
+            ⚪ Your Answer: Not Attempted
+            </p>
+
+            <p style="color:green;">
+            ✅ Correct Answer:
+            ${questions[i].options[questions[i].answer]}
+            </p>
+
+        </div>
+        `;
     }
+
+    else if(answers[i] === questions[i].answer){
+
+        correct++;
+        score += 4;
+    }
+
+    else{
+
+        wrong++;
+        score -= 1;
+
+        report += `
+        <div style="border:1px solid #ddd;padding:15px;margin:10px 0;border-radius:8px;background:#fff8f8;">
+
+            <h3>Question ${i+1}</h3>
+
+            <p><b>${questions[i].question}</b></p>
+
+            <p>A. ${questions[i].options[0]}</p>
+            <p>B. ${questions[i].options[1]}</p>
+            <p>C. ${questions[i].options[2]}</p>
+            <p>D. ${questions[i].options[3]}</p>
+
+            <hr>
+
+            <p style="color:red;">
+            ❌ Your Answer:
+            ${questions[i].options[answers[i]]}
+            </p>
+
+            <p style="color:green;">
+            ✅ Correct Answer:
+            ${questions[i].options[questions[i].answer]}
+            </p>
+
+        </div>
+        `;
+    }
+}
 
     let accuracy = 0;
 
@@ -118,17 +175,28 @@ fetch(
 
         <hr>
 
-        <h2>Performance</h2>
-        
-        ${
-            score >= 180 ? "<h3>Outstanding ⭐</h3>" :
-            score >= 160 ? "<h3>Excellent ✅</h3>" :
-            score >= 140 ? "<h3>Good 👍</h3>" :
-            score >= 120 ? "<h3>Average 📘</h3>" :
-            "<h3>Needs Improvement 📚</h3>"
-        }
-    </div>
-    `;
+       <h2>Performance</h2>
+
+${
+    score >= 180 ? "<h3>Outstanding ⭐</h3>" :
+    score >= 160 ? "<h3>Excellent ✅</h3>" :
+    score >= 140 ? "<h3>Good 👍</h3>" :
+    score >= 120 ? "<h3>Average 📘</h3>" :
+    "<h3>Needs Improvement 📚</h3>"
+}
+
+<hr>
+
+<h2>Detailed Analysis</h2>
+
+<p>
+Review all wrong and unattempted questions below.
+</p>
+
+${report}
+
+</div>
+`;
 }
 let t=2400;setInterval(()=>{let m=Math.floor(t/60),s=t%60;let el=document.getElementById('timer');if(el){el.innerHTML=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}t--;if(t<0)submitTest();},1000);
 fetch("https://script.google.com/macros/s/AKfycbxZ5Dt35aLPJEdBGxMbwGZlLCL6F9nKaRIRGzkk_2K8HUrgFvAphGiJ7-JMUrpxkeuHBw/exec")
