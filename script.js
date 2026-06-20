@@ -18,7 +18,7 @@ let end = new Date(data.end.replace(" ", "T"));
 
     document.body.innerHTML = `
     <div style="text-align:center;padding:100px;">
-        <h1>JEE Chemistry Mock Test</h1>
+        <h1>JEE Chemistry Test</h1>
         <h2>⏳ Test has not started yet.</h2>
         <h3>Exam Starts: ${data.start}</h3>
     </div>`;
@@ -30,7 +30,7 @@ if (now > end) {
 
     document.body.innerHTML = `
     <div style="text-align:center;padding:100px;">
-        <h1>JEE Chemistry Mock Test</h1>
+        <h1>JEE Chemistry Test</h1>
         <h2>❌ The test has ended.</h2>
     </div>`;
 
@@ -327,7 +327,7 @@ function submitTest(){
                 max-width:900px;
                 margin:auto;">
 
-        <h1>JEE Chemistry Mock Test Result</h1>
+        <h1>Chemistry Test Result</h1>
 
         <hr>
 
@@ -381,7 +381,7 @@ function submitTest(){
 // TIMER
 // =======================
 
-let t = 2400;
+let t = 3600;
 
 setInterval(()=>{
 
