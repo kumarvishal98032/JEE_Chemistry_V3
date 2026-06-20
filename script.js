@@ -185,18 +185,6 @@ ${
     "<h3>Needs Improvement 📚</h3>"
 }
 
-<hr>
-
-<h2>Detailed Analysis</h2>
-
-<p>
-Review all wrong and unattempted questions below.
-</p>
-
-${report}
-
-<hr>
-
 <button onclick="window.print()"
 style="
 padding:12px 20px;
@@ -210,6 +198,18 @@ margin-top:20px;
 ">
 📄 Download / Print PDF
 </button>
+
+<hr>
+
+<h2>Detailed Analysis</h2>
+
+<p>
+Review all wrong and unattempted questions below.
+</p>
+
+${report}
+
+<hr>
 
 </div>
 `;
