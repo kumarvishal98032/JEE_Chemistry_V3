@@ -195,6 +195,22 @@ Review all wrong and unattempted questions below.
 
 ${report}
 
+<hr>
+
+<button onclick="window.print()"
+style="
+padding:12px 20px;
+font-size:16px;
+background:#0b5ed7;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:20px;
+">
+📄 Download / Print PDF
+</button>
+
 </div>
 `;
 }
