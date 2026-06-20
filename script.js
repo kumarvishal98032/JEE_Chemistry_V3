@@ -6,36 +6,38 @@ let questions = [];
 let current = 0;
 let answers = [];
 
-fetch("https://script.google.com/macros/s/AKfycbzhdsUleMSsQz8ZqmY6owRUWZFWiU0UgXtGDT801NmZnIaExUHPCvVShxLKagUTHOSIXA/exec?action=settings")
+fetch("https://script.google.com/macros/s/AKfycbyepGGUp8TouZ3-B7uJOiGb5pY4XiqAQLGRfBLuBDuuWJKb3ooJ5z5OFubyJNDauSC4LQ/exec?action=settings")
 .then(response => response.json())
 .then(data => {
 
     let now = new Date();
-    let start = new Date(data.start);
-    let end = new Date(data.end);
+ let start = new Date(data.start.replace(" ", "T"));
+let end = new Date(data.end.replace(" ", "T"));
 
     if (now < start) {
 
-        document.body.innerHTML = `
-        <div style="text-align:center;padding:100px;">
-            <h1>JEE Chemistry Mock Test</h1>
-            <h2>⏳ Test has not started yet.</h2>
-            <h3>Start Time: ${start}</h3>
-        </div>`;
+    document.body.innerHTML = `
+    <div style="text-align:center;padding:100px;">
+        <h1>JEE Chemistry Mock Test</h1>
+        <h2>⏳ Test has not started yet.</h2>
+        <h3>Exam Starts: ${data.start}</h3>
+    </div>`;
 
-        return;
-    }
+    return;
+}
 
-    if (now > end) {
+if (now > end) {
 
-        document.body.innerHTML = `
-        <div style="text-align:center;padding:100px;">
-            <h1>JEE Chemistry Mock Test</h1>
-            <h2>❌ The test has ended.</h2>
-        </div>`;
+    document.body.innerHTML = `
+    <div style="text-align:center;padding:100px;">
+        <h1>JEE Chemistry Mock Test</h1>
+        <h2>❌ The test has ended.</h2>
+    </div>`;
 
-        return;
-    }
+    return;
+}
+
+loadQuestions();
 
     loadQuestions();
 
@@ -48,7 +50,7 @@ fetch("https://script.google.com/macros/s/AKfycbzhdsUleMSsQz8ZqmY6owRUWZFWiU0UgX
 
 function loadQuestions() {
 
-    fetch("https://script.google.com/macros/s/AKfycbzhdsUleMSsQz8ZqmY6owRUWZFWiU0UgXtGDT801NmZnIaExUHPCvVShxLKagUTHOSIXA/exec?action=questions")
+    fetch("https://script.google.com/macros/s/AKfycbyepGGUp8TouZ3-B7uJOiGb5pY4XiqAQLGRfBLuBDuuWJKb3ooJ5z5OFubyJNDauSC4LQ/exec?action=questions")
     .then(response => response.json())
     .then(data => {
 
