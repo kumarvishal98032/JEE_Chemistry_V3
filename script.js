@@ -86,6 +86,7 @@ function loadQuestions() {
 
 function loadQ(){
 
+    
     document.getElementById('qno').innerHTML =
         'Question ' + (current + 1);
 
