@@ -48,7 +48,7 @@ fetch("https://script.google.com/macros/s/AKfycbzhdsUleMSsQz8ZqmY6owRUWZFWiU0UgX
 
 function loadQuestions() {
 
-    fetch("YOUR_SCRIPT_URL?action=questions")
+    fetch("https://script.google.com/macros/s/AKfycbzhdsUleMSsQz8ZqmY6owRUWZFWiU0UgXtGDT801NmZnIaExUHPCvVShxLKagUTHOSIXA/exec?action=questions")
     .then(response => response.json())
     .then(data => {
 
