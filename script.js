@@ -296,7 +296,7 @@ function submitTest(){
 
     // SAVE RESULT
 
-    fetch("YOUR_SCRIPT_URL",{
+    fetch("https://script.google.com/macros/s/AKfycbyepGGUp8TouZ3-B7uJOiGb5pY4XiqAQLGRfBLuBDuuWJKb3ooJ5z5OFubyJNDauSC4LQ/exec",{
 
         method:"POST",
         mode:"no-cors",
