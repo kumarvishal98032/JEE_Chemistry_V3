@@ -67,6 +67,7 @@ function loadQuestions() {
 
         answers = new Array(questions.length).fill(null);
 
+        enterFullScreen();
         palette();
         loadQ();
 
@@ -430,6 +431,41 @@ document.addEventListener("visibilitychange", function () {
 
             alert(
                 "You have exceeded the allowed violations.\n\n" +
+                "Your test will now be submitted automatically."
+            );
+
+            submitTest();
+        }
+    }
+});
+
+
+
+function enterFullScreen() {
+
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+
+}
+
+
+document.addEventListener("fullscreenchange", function () {
+
+    if (!document.fullscreenElement) {
+
+        violationCount++;
+
+        alert(
+            "⚠ Warning!\n\n" +
+            "You exited Full Screen Mode.\n\n" +
+            "Violation Count: " + violationCount + "/3"
+        );
+
+        if (violationCount >= 3) {
+
+            alert(
+                "You exceeded the maximum allowed violations.\n\n" +
                 "Your test will now be submitted automatically."
             );
 
