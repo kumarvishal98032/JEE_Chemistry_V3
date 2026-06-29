@@ -452,6 +452,7 @@ function enterFullScreen() {
 
 document.addEventListener("fullscreenchange", function () {
 
+    // If student exits fullscreen
     if (!document.fullscreenElement) {
 
         violationCount++;
@@ -462,14 +463,24 @@ document.addEventListener("fullscreenchange", function () {
             "Violation Count: " + violationCount + "/3"
         );
 
+        // Auto submit after 3 violations
         if (violationCount >= 3) {
 
             alert(
-                "You exceeded the maximum allowed violations.\n\n" +
-                "Your test will now be submitted automatically."
+                "Maximum violations reached.\n\n" +
+                "Your test will now be submitted."
             );
 
             submitTest();
         }
+
+        // Re-enter fullscreen after 1 second
+        setTimeout(() => {
+
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            }
+
+        }, 1000);
     }
 });
