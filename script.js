@@ -484,3 +484,14 @@ document.addEventListener("fullscreenchange", function () {
         }, 1000);
     }
 });
+
+
+function startExam() {
+
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+
+    // Hide button after click
+    document.getElementById("startBtn").style.display = "none";
+}
