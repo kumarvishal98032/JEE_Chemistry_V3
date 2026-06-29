@@ -67,7 +67,7 @@ function loadQuestions() {
 
         answers = new Array(questions.length).fill(null);
 
-        enterFullScreen();
+       // enterFullScreen();
         palette();
         loadQ();
 
