@@ -406,3 +406,34 @@ setInterval(()=>{
     }
 
 },1000);
+
+
+// ===== ANTI-CHEATING =====
+
+let violationCount = 0;
+
+document.addEventListener("visibilitychange", function () {
+
+    if (document.hidden) {
+
+        violationCount++;
+
+        alert(
+            "⚠ Warning!\n\n" +
+            "You have left the exam window.\n\n" +
+            "Violation Count: " + violationCount
+        );
+
+        // Auto submit after 3 violations
+
+        if (violationCount >= 3) {
+
+            alert(
+                "You have exceeded the allowed violations.\n\n" +
+                "Your test will now be submitted automatically."
+            );
+
+            submitTest();
+        }
+    }
+});
